@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Home from './Home'
+import Blog from './Blog'
+import Contacto from './Contacto'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 import './App.css';
 
 function App() {
+  const [vista, setVista] = useState('blog')
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+    <BrowserRouter>
+      <nav>
+
+        <p> <Link to="/home">Home</Link></p>
+        <p> <Link to="/blog">Blog</Link></p>
+        <p> <Link to="/contacto">Contacto</Link></p>
+      </nav>
+
+
+
+      <Route exact path="/blog" component={Blog} />
+      <Route path="/contacto" component={Contacto} />
+      <Route path="/home" component={Home} />
+    </BrowserRouter>
+
+
+
+
+
   );
 }
 
